@@ -2,9 +2,7 @@ let fs = require("fs").promises;
 let esbuild = require("esbuild");
 
 let getTemplate = (entry)=>`<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-</head>
+<head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></head>
 <body>
     <script src="./${entry}.js"></script>
     <script>new EventSource('/esbuild').addEventListener('change', () => location.reload())</script>
