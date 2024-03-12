@@ -5,6 +5,6 @@ let App = () => {
       <div>Hello {str} !!!</div> //createElement tag string
     );
 };
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(<App />); //createElement tag function
 });
