@@ -2,7 +2,7 @@ import React from "./React";
 let App = () => {
     let str = `World`;
     return (
-      <div>Hello {str} !!!</div> //createElement tag string
+      <div>Hello {str} !</div> //createElement tag string
     );
 };
 document.addEventListener("DOMContentLoaded", () => {

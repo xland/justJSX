@@ -1,4 +1,5 @@
 import React from "./React";
+import "./Index.scss";
 import Item from "./Item"
 
 let App = () => {
@@ -8,15 +9,15 @@ let App = () => {
     ele.appendChild(<Item data={v}>{v}</Item>);
   }
   let arr = [1, 2, 3, 4, 5, 6];
-  return (<>
+  return (<div class="Index">
     <div>这是一个列表： </div>
     <ul>
       {arr.map((v, i) => (
         <Item data={v}>{i + 1}</Item>
       ))}
     </ul>
-    <div onClick={func}>增加一个</div>
-  </>);
+    <div onClick={func} class="addBtn">增加一个</div>
+  </div>);
 };
 document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(<App></App>);

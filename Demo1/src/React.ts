@@ -12,18 +12,17 @@ let appendChild = (children: any,node: Node)=> {
 }
 let appendAttr = (attr: object,node: HTMLElement)=>{
     for (let key of Object.keys(attr)) {
-        let val = attr[key];
         if(key === "style"){
-            node.setAttribute("style", val)
-        } else if(typeof val === "function"){
+            node.setAttribute("style", attr[key])
+        } else if(typeof attr[key] === "function"){
             if(key.startsWith("on")){
-                node.addEventListener(key.toLocaleLowerCase().substring(2), val)
+                node.addEventListener(key.toLocaleLowerCase().substring(2), attr[key])
             }
-        } else if(typeof val === "object"){
-            node[key] = val
+        } else if(typeof attr[key] === "object"){
+            node[key] = attr[key]
         }        
         else {
-            node.setAttribute(key, val)
+            node.setAttribute(key, attr[key])
         }
     }
 }
@@ -34,11 +33,8 @@ let createElement = (tag: any, attr: any, ...children: any[]):any => {
         if(children) appendChild(children,node)
         return node;
     } else if(typeof tag === "function"){
-        let obj = tag({...attr,children})
-        return obj
-    }else {
-        // console.log(tag,attr,children)
-    }    
+        return tag({...attr,children})
+    } else console.log('jsx error',tag,attr,children)    
 }
 let Fragment = (attr:any) =>{
     const fragment = document.createDocumentFragment()
@@ -46,3 +42,5 @@ let Fragment = (attr:any) =>{
     return fragment
 }
 export default { createElement, Fragment }
+
+
